@@ -1,9 +1,7 @@
 class Person
-  attr_reader "name", "phone_number"
+  attr_reader "name", "phone_number", "address", "position", "salary", "slack_account", "github_account"
 
-  def initialize(name, phone_number, address, position, salary,
-    slack_account, github_account)
-    
+  def initialize(name, phone_number, address, position, salary, slack_account, github_account)
     @name = name
     @phone_number = phone_number
     @address = address
@@ -62,7 +60,22 @@ loop do
   end
 
   if choice == "s"
-    puts "Thanks for searching"
+    puts "What name do you want to search for?"
+    search_name = gets.chomp
+
+    found_person = people.find { |person| person.name = search_name }
+
+    if found_person
+      puts "Name #{person.name}"
+      puts "Phone_number #{person.phone_number}"
+      puts "Address #{person.address}"
+      puts "Position #{person.position}"
+      puts "Salary #{person.salary}"
+      puts "Slack_account #{person.slack_account}"
+      puts "github_account #{person.github_account}"
+    else
+      puts " Sorry but that name is not in our database."
+    end
   end
 
   if choice == "d"
