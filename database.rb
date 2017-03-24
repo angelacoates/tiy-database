@@ -63,7 +63,7 @@ loop do
     puts "What name do you want to search for?"
     search_name = gets.chomp
 
-    found_person = people.find { |person| person.name = search_name }
+    found_person = people.find { |person| person.name == search_name }
 
     if found_person
       puts "Name #{person.name}"
@@ -79,6 +79,11 @@ loop do
   end
 
   if choice == "d"
-    puts "You have deleted a person"
+    puts "Please enter the name you would like to delete"
+    delete_name = gets.chomp
+
+    people.delete_if {|person| person.name == delete_name}
+
+    puts " Thank you, #{delete_name} has been deleted from the data base"
   end
 end
