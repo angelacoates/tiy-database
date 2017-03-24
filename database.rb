@@ -22,7 +22,6 @@ loop do
   choice = gets.chomp
 
   if choice == "a"
-    puts "Thanks for adding!"
 
     puts "Please provide the name of the person you are adding"
 
@@ -66,13 +65,13 @@ loop do
     found_person = people.find { |person| person.name == search_name }
 
     if found_person
-      puts "Name #{person.name}"
-      puts "Phone_number #{person.phone_number}"
-      puts "Address #{person.address}"
-      puts "Position #{person.position}"
-      puts "Salary #{person.salary}"
-      puts "Slack_account #{person.slack_account}"
-      puts "github_account #{person.github_account}"
+      puts "/nName #{person.name}"
+      puts "/nPhone_number #{person.phone_number}"
+      puts "/nAddress #{person.address}"
+      puts "/nPosition #{person.position}"
+      puts "/nSalary #{person.salary}"
+      puts "/nSlack_account #{person.slack_account}"
+      puts "/ngithub_account #{person.github_account}"
     else
       puts " Sorry but that name is not in our database."
     end
@@ -82,8 +81,12 @@ loop do
     puts "Please enter the name you would like to delete"
     delete_name = gets.chomp
 
-    people.delete_if {|person| person.name == delete_name}
+    delete_person = people.delete_if {|person| person.name == delete_name}
+    if delete_person
+      puts " Thank you, #{delete_name} has been deleted from the data base"
+    else
+      puts "Sorry that name does not exist in our system."
+    end
 
-    puts " Thank you, #{delete_name} has been deleted from the data base"
   end
 end
